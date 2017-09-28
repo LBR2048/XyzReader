@@ -2,6 +2,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/ltgray"
     android:orientation="vertical">
 
     <android.support.v4.widget.SwipeRefreshLayout
@@ -25,7 +26,7 @@
         android:id="@+id/toolbar_container"
         android:layout_width="match_parent"
         android:layout_height="112dp"
-        android:background="?colorPrimary"
+        android:background="@color/theme_primary"
         android:elevation="8dp">
 
         <android.support.v7.widget.Toolbar
@@ -34,6 +35,7 @@
             android:layout_marginLeft="@dimen/list_toolbar_side_margin"
             android:layout_marginRight="@dimen/list_toolbar_side_margin"
             android:layout_width="match_parent"
+            android:background="@color/theme_primary"
             android:layout_height="?actionBarSize"
             android:layout_gravity="bottom">
 
