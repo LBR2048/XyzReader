@@ -27,7 +27,7 @@
         android:paddingBottom="4dp"
         tools:text="Primary Text"
         android:textColor="@color/white_text"
-        android:background="@color/cardview_dark_background"
+        android:background="@color/theme_primary"
         android:ellipsize="end"
         android:lines="2" />
 
@@ -40,7 +40,7 @@
         android:paddingRight="16dp"
         android:paddingBottom="16dp"
         android:textColor="@color/white_text"
-        android:background="@color/cardview_dark_background"
+        android:background="@color/theme_primary"
         tools:text="Secondary Text"
         android:lines="2"
         android:ellipsize="end" />
