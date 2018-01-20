@@ -35,7 +35,7 @@
             tools:text="Primary Text"
             android:textColor="@color/primary_text"
             android:ellipsize="end"
-            android:maxLines="4" />
+            android:lines="2" />
 
         <TextView
             android:id="@+id/article_subtitle"
@@ -47,7 +47,7 @@
             android:paddingBottom="16dp"
             android:textColor="@color/secondary_text"
             tools:text="Secondary Text"
-            android:maxLines="2"
+            android:lines="2"
             android:ellipsize="end" />
     </LinearLayout>
 
