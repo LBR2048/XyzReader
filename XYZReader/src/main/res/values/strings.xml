@@ -8,5 +8,7 @@
     <string name="action_share">Share</string>
 
     <string name="up">Up</string>
+    <string name="snackbar_message">You are offline</string>
+    <string name="snackbar_action_retry">Retry</string>
 
 </resources>

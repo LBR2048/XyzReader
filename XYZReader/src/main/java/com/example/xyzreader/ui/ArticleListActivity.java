@@ -7,7 +7,11 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.Loader;
 import android.database.Cursor;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
@@ -61,6 +65,13 @@ public class ArticleListActivity extends AppCompatActivity implements
         final View toolbarContainerView = findViewById(R.id.toolbar_container);
 
         mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_layout);
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                refresh();
+            }
+        });
+        mSwipeRefreshLayout.setProgressViewOffset(true, 0, 200);
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         getLoaderManager().initLoader(0, null, this);
@@ -71,7 +82,11 @@ public class ArticleListActivity extends AppCompatActivity implements
     }
 
     private void refresh() {
-        startService(new Intent(this, UpdaterService.class));
+        if (isOnline()) {
+            startService(new Intent(this, UpdaterService.class));
+        } else {
+            showOfflineMessage();
+        }
     }
 
     @Override
@@ -205,5 +220,26 @@ public class ArticleListActivity extends AppCompatActivity implements
             titleView = (TextView) view.findViewById(R.id.article_title);
             subtitleView = (TextView) view.findViewById(R.id.article_subtitle);
         }
+    }
+
+    private boolean isOnline() {
+        final ConnectivityManager conMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (conMgr != null) {
+            final NetworkInfo activeNetwork = conMgr.getActiveNetworkInfo();
+            return (activeNetwork != null && activeNetwork.isConnected());
+        }
+        return false;
+    }
+
+    private void showOfflineMessage() {
+        CoordinatorLayout parentView = (CoordinatorLayout) findViewById(R.id.article_list_parent);
+        Snackbar.make(parentView, R.string.snackbar_message, Snackbar.LENGTH_INDEFINITE)
+                .setAction(R.string.snackbar_action_retry, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        refresh();
+                    }
+                })
+                .show();
     }
 }
