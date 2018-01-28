@@ -18,7 +18,7 @@
 
     <TextView
         android:id="@+id/article_title"
-        style="@style/TextAppearance.AppCompat.Medium"
+        style="@style/TextAppearance.AppCompat.Medium.Inverse"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="16dp"
@@ -26,21 +26,19 @@
         android:paddingRight="16dp"
         android:paddingBottom="4dp"
         tools:text="Primary Text"
-        android:textColor="@color/white_text"
-        android:background="@color/theme_primary"
+        android:theme="@style/BookTitleList"
         android:ellipsize="end"
         android:lines="2" />
 
     <TextView
         android:id="@+id/article_subtitle"
-        style="@style/TextAppearance.AppCompat.Small"
+        style="@style/TextAppearance.AppCompat.Small.Inverse"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
         android:paddingBottom="16dp"
-        android:textColor="@color/white_text"
-        android:background="@color/theme_primary"
+        android:theme="@style/BookTitleList"
         tools:text="Secondary Text"
         android:lines="2"
         android:ellipsize="end" />

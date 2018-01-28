@@ -28,4 +28,6 @@
     <color name="white_text">#ffffff</color>
     <color name="icons">#FFFFFF</color>
     <color name="divider">#BDBDBD</color>
+
+    <color name="book_title">#333333</color>
 </resources>
